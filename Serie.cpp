@@ -86,15 +86,15 @@ double Serie::calculaPromedio(){
 
 // Otros métodos
 string Serie::str(){
-    string serieConcatenado = '\n' + iD + ' ' + titulo + ' ' + to_string(duracion) + ' ' + genero + ' ' + to_string(calificacion) + ' ' + to_string(cantidad);
+    string serieConcatenado = iD + ' ' + titulo + ' ' + to_string(duracion) + ' ' + genero + ' ' + to_string(calificacion) + ' ' + to_string(cantidad);
     if (cantidad > 0) {
         string episodiosConcatenado;
         for (int i = 0; i < cantidad; i++) {
             episodiosConcatenado =  episodiosConcatenado + '\n' + episodios[i].getTitulo() + ' ' + to_string(episodios[i].getTemporada()) + ' ' + to_string(episodios[i].getCalificacion());
         }
-        return serieConcatenado + episodiosConcatenado;
+        return serieConcatenado + episodiosConcatenado + '\n';
     }
-    return serieConcatenado;
+    return '\n' + serieConcatenado + '\n';
 }
 
 // Agrega un episodio solo si existe espacio
