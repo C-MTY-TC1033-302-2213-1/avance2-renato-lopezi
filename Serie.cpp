@@ -7,7 +7,6 @@ ITC
 */
 
 #include "Serie.h"
-#include <set>
 
 
 // Metodo constructor
@@ -20,14 +19,17 @@ Serie::Serie(string _iD, string _titulo, int _duracion, string _genero, double _
 
 // Metodo calcula duracion
 void Serie::calculaDuracion() {
-    std::set<int> temporadasUnicas;
-    for (int index = 0; index < cantidad; index++) {
-        temporadasUnicas.insert(episodios[index].getTemporada());
+    // Declaracion de la duracion total
+    int duracionTotal;
+
+    // Inicializar
+    duracionTotal = 0;
+
+    // Ciclo for para contar los episodios totales
+    for (int index = 0; index < cantidad; index++){
+        duracionTotal += episodios[index].getTemporada();
     }
-    if (!temporadasUnicas.empty()) {
-        int max_temporada = *temporadasUnicas.rbegin(); 
-        duracion = max_temporada;
-    }  
+    duracion = duracionTotal;
 }
 
 
